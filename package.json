@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/JorgenVatle/blockchain-wallet-ts#readme",
   "devDependencies": {
+    "@types/config": "0.0.36",
     "@types/jest": "^24.0.23",
     "config": "^3.2.4",
     "jest": "^24.9.0",
