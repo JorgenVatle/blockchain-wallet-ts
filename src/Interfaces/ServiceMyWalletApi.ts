@@ -221,6 +221,13 @@ export namespace ServiceMyWalletApi {
              */
             success: boolean;
         }
+
+        export interface fetchBalance {
+            /**
+             * Bitcoin wallet balance in satoshis.
+             */
+            balance: number;
+        }
     }
 
 }
