@@ -82,6 +82,50 @@ export namespace ServiceMyWalletApi {
              */
             fee_per_byte?: number;
         }
+
+        /**
+         * Create a transaction with multiple recipients.
+         *
+         * @link https://github.com/blockchain/service-my-wallet-v3#send-to-many
+         */
+        export interface sendToMany {
+            /**
+             * List of Bitcoin addresses to send to and the amount in satoshis.
+             * Key being the address, and value being the amount of satoshis to send.
+             * E.g. { '1A8JiWcwvpY7tAopUkSnGuEYHmzGYfZPiq': 100000, '18fyqiZzndTxdVo7g9ouRogB4uFj86JJiy': 50000 }
+             */
+            recipients: { [address: string]: number };
+
+            /**
+             * Main wallet password.
+             */
+            password: string;
+
+            /**
+             * Second wallet password. Required only if enabled by the wallet.
+             */
+            second_password?: string;
+
+            /**
+             * Blockchain.com API Key.
+             */
+            api_code?: string;
+
+            /**
+             * Bitcoin address or account-index to send from.
+             */
+            from?: string;
+
+            /**
+             * Overall transaction fee. (in satoshis)
+             */
+            fee?: number;
+
+            /**
+             * Transaction fee per transaction byte. (in satoshis)
+             */
+            fee_per_byte?: number;
+        }
     }
 
     /**
