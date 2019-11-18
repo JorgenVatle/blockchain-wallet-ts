@@ -1,0 +1,25 @@
+{
+  "name": "blockchain-wallet-ts",
+  "version": "1.0.0",
+  "description": "TypeScript wrapper for Blockchain.info's wallet API",
+  "main": "dist/BlockchainWallet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JorgenVatle/blockchain-wallet-ts.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "Node",
+    "Blockchain.info",
+    "Bitcoin"
+  ],
+  "author": "Jørgen <Jorgen@WcAServices.net> (https://github.com/JorgenVatle)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JorgenVatle/blockchain-wallet-ts/issues"
+  },
+  "homepage": "https://github.com/JorgenVatle/blockchain-wallet-ts#readme"
+}
