@@ -17,7 +17,7 @@ export default class BlockchainApi {
     /**
      * Blockchain Wallet constructor
      */
-    public constructor(config: BlockchainWalletConfig) {
+    public constructor(config: BlockchainApiConfig) {
         this.apiKey = config.apiKey;
         this.http = Axios.create({
             baseURL: config.apiUrl,
@@ -27,7 +27,7 @@ export default class BlockchainApi {
     /**
      * Create a new wallet.
      */
-    public create(params: ServiceMyWalletApi.Params.createWallet) {
+    public createWallet(params: ServiceMyWalletApi.Params.createWallet) {
         params.api_code = params.api_code || this.apiKey;
 
         return this.http.get<ServiceMyWalletApi.Response.createWallet>('/api/v2/create', {
@@ -47,7 +47,7 @@ export default class BlockchainApi {
 /**
  * Constructor options.
  */
-export interface BlockchainWalletConfig {
+export interface BlockchainApiConfig {
     /**
      * URL to running 'service-my-wallet', include port!
      * E.g. http://localhost:3000
