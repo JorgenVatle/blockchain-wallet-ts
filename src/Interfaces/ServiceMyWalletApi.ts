@@ -244,6 +244,9 @@ export namespace ServiceMyWalletApi {
             success: boolean;
         }
 
+        /**
+         * Fetch balance for current wallet.
+         */
         export interface fetchBalance {
             /**
              * Bitcoin wallet balance in satoshis.
