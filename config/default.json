@@ -1,7 +1,7 @@
 {
   "blockchain": {
     "apiKey": "Enter your Blockchain.com API key here to run tests",
-    "walletUrl": "URL to locally hosted blockchain.com wallet service."
+    "apiUrl": "URL to locally hosted blockchain.com wallet service."
   },
   "wallet": {
     "guid": "Some GUID for testing individual wallets",

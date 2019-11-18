@@ -10,6 +10,6 @@ describe('BlockchainWallet', () => {
     };
     const Wallet = new BlockchainApi({
         apiKey: config.blockchain.apiKey,
-        apiUrl: config.blockchain.walletUrl,
+        apiUrl: config.blockchain.apiUrl,
     })
 });
