@@ -1,7 +1,7 @@
 import Axios, { AxiosInstance } from 'axios';
 import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
 
-export default class BlockchainWallet {
+export default class BlockchainApi {
 
     /**
      * Blockchain.com API key
