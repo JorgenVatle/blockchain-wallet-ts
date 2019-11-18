@@ -186,6 +186,41 @@ export namespace ServiceMyWalletApi {
              */
             success: boolean;
         }
+
+        /**
+         * Wallet make payment response.
+         */
+        export interface sendToMany {
+            /**
+             * Bitcoin addresses you sent Bitcoin to.
+             */
+            to: string[];
+
+            /**
+             * Bitcoin addresses you sent Bitcoin from.
+             */
+            from: string[];
+
+            /**
+             * Number of satoshis to each 'to[]' address. (in satoshis)
+             */
+            amounts: number[];
+
+            /**
+             * Bitcoin transaction fee. (in satoshis)
+             */
+            fee: number;
+
+            /**
+             * Bitcoin transaction hash.
+             */
+            txid: string;
+
+            /**
+             * Whether or not the payment was successful.
+             */
+            success: boolean;
+        }
     }
 
 }
