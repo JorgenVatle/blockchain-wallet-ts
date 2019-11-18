@@ -34,6 +34,20 @@ export default class BlockchainWallet {
         }).then(({ data }) => data);
     }
 
+    /**
+     * Initiate a payment to the given address.
+     *
+     * @param guid      // Wallet ID
+     * @param params    // Request parameters.
+     */
+    public pay(guid: string, params: ServiceMyWalletApi.Params.makePayment) {
+        params.api_code = params.api_code || this.apiKey;
+
+        return this.http.get<ServiceMyWalletApi.Response.makePayment>(`/merchant/${guid}/payment`, {
+            params,
+        }).then(({ data }) => data);
+    }
+
 }
 
 /**
