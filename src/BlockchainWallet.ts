@@ -76,6 +76,13 @@ export default class BlockchainWallet {
         }).then(({data}) => data);
     }
 
+    /**
+     * Enable HD wallet functionality for the current wallet.
+     */
+    public async enableHD() {
+        await this.http.get(`/merchant/${this.guid}/enableHD`);
+    }
+
 }
 
 interface BlockchainWalletConfig {
