@@ -35,6 +35,53 @@ export namespace ServiceMyWalletApi {
              */
             email?: string;
         }
+
+        /**
+         * Create a transaction.
+         *
+         * @link https://github.com/blockchain/service-my-wallet-v3#make-payment
+         */
+        export interface makePayment {
+            /**
+             * Bitcoin address to send to.
+             */
+            to: string;
+
+            /**
+             * Amount _in satoshis_ to send to the given address.
+             */
+            amount: number;
+
+            /**
+             * Main wallet password.
+             */
+            password: string;
+
+            /**
+             * Second wallet password. Required only if enabled by the wallet.
+             */
+            second_password?: string;
+
+            /**
+             * Blockchain.com API Key.
+             */
+            api_code?: string;
+
+            /**
+             * Bitcoin address or account-index to send from.
+             */
+            from?: string;
+
+            /**
+             * Overall transaction fee. (in satoshis)
+             */
+            fee?: number;
+
+            /**
+             * Transaction fee per transaction byte. (in satoshis)
+             */
+            fee_per_byte?: number;
+        }
     }
 
     /**
