@@ -26,6 +26,8 @@ export default class BlockchainWallet {
      * Create a new wallet.
      */
     public create(params: BlockchainWallet.createParams) {
+        params.api_code = params.api_code || this.apiKey;
+
         return this.http.get<BlockchainWallet.Response.create>('/api/v2/create', {
             params,
         }).then(({ data }) => data);
