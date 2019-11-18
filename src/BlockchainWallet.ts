@@ -96,6 +96,17 @@ export default class BlockchainWallet {
         }).then(({data}) => data);
     }
 
+    /**
+     * Fetch HD xPubs for this wallet.
+     *
+     * Todo: Document return type.
+     */
+    public get xpubs() {
+        return this.http.get(`/merchant/${this.guid}/accounts/xpubs`, {
+            params: this.requestParams(),
+        }).then(({data}) => data);
+    }
+
 }
 
 interface BlockchainWalletConfig {
