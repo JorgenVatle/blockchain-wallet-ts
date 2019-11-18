@@ -1,6 +1,6 @@
 import Config from 'config';
 
-export namespace LocalConfig {
+export namespace ConfigContent {
     export interface blockchain {
         apiKey: string;
         apiUrl: string;
@@ -12,6 +12,6 @@ export namespace LocalConfig {
 }
 
 export default {
-    blockchain: Config.get<LocalConfig.blockchain>('blockchain'),
-    wallet: Config.get<LocalConfig.wallet>('wallet'),
+    blockchain: Config.get<ConfigContent.blockchain>('blockchain'),
+    wallet: Config.get<ConfigContent.wallet>('wallet'),
 };
