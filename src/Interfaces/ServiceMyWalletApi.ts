@@ -126,6 +126,28 @@ export namespace ServiceMyWalletApi {
              */
             fee_per_byte?: number;
         }
+
+        /**
+         * Create new HD wallet.
+         *
+         * @link https://github.com/blockchain/service-my-wallet-v3#create-new-hd-account
+         */
+        export interface createHDAccount {
+            /**
+             * Blockchain.com wallet password.
+             */
+            password?: string;
+
+            /**
+             * Blockchain.com API Key.
+             */
+            api_code?: string;
+
+            /**
+             * Label to assign to the HD wallet.
+             */
+            label?: string;
+        }
     }
 
     /**
