@@ -7,7 +7,7 @@ export default class BlockchainApi {
     /**
      * Blockchain.com API key
      */
-    private apiKey?: string;
+    private readonly apiKey?: string;
 
     /**
      * Service client.
