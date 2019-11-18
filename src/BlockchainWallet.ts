@@ -1,4 +1,5 @@
 import Axios, { AxiosInstance } from 'axios';
+import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
 
 export default class BlockchainWallet {
 
@@ -25,10 +26,10 @@ export default class BlockchainWallet {
     /**
      * Create a new wallet.
      */
-    public create(params: BlockchainWallet.createParams) {
+    public create(params: ServiceMyWalletApi.Params.createWallet) {
         params.api_code = params.api_code || this.apiKey;
 
-        return this.http.get<BlockchainWallet.Response.create>('/api/v2/create', {
+        return this.http.get<ServiceMyWalletApi.Response.createWallet>('/api/v2/create', {
             params,
         }).then(({ data }) => data);
     }
@@ -55,62 +56,4 @@ export namespace BlockchainWallet {
         apiKey?: string;
     }
 
-    /**
-     * Create wallet query parameters.
-     *
-     * @link https://github.com/blockchain/service-my-wallet-v3#creating-a-new-blockchain-wallet
-     */
-    export interface createParams {
-        /**
-         * Main wallet password.
-         */
-        password: string;
-
-        /**
-         * Blockchain.com API key.
-         */
-        api_code?: string;
-
-        /**
-         * Private key to import into wallet as first address.
-         */
-        priv?: string;
-
-        /**
-         * Label to give the first address generated in the wallet.
-         */
-        label?: string;
-
-        /**
-         * Email address to associate with the newly created wallet.
-         */
-        email?: string;
-    }
-
-    /**
-     * API Responses.
-     */
-    export namespace Response {
-
-        /**
-         * Wallet create request response.
-         */
-        export interface create {
-            /**
-             * Wallet ID.
-             */
-            guid: string;
-
-            /**
-             * Bitcoin wallet address.
-             */
-            address: string;
-
-            /**
-             * Label you associated with your wallet.
-             */
-            label?: string;
-        }
-
-    }
 }
