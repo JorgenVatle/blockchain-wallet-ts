@@ -112,7 +112,7 @@ export default class BlockchainWallet {
      *
      * Todo: Document return type.
      */
-    public createHD(params: ServiceMyWalletApi.Params.createHDAccount) {
+    public createHD(params?: ServiceMyWalletApi.Params.createHDAccount) {
         return this.http.get(`/merchant/${this.guid}/accounts/create`, {
             params: this.requestParams(params),
         }).then(({ data }) => data);
