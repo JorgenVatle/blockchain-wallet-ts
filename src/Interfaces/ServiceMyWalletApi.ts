@@ -253,6 +253,46 @@ export namespace ServiceMyWalletApi {
              */
             balance: number;
         }
+
+        /**
+         * HD wallet creation response.
+         */
+        export interface createHD {
+            /**
+             * Whether or not the account has been archived. (can be un-archived at any time)
+             */
+            archived: boolean;
+
+            /**
+             * xPriv of HD account.
+             */
+            xpriv: string;
+
+            /**
+             * xPub of HD account.
+             */
+            xpub: string;
+
+            /**
+             * Labels assigned to account addresses.
+             */
+            addressLabels: string[];
+
+            /**
+             * Wallet account cache.
+             */
+            cache: {
+                /**
+                 * xPub (purpose unknown, not documented by Blockchain.com)
+                 */
+                receiveAccount: string;
+
+                /**
+                 * xPub (purpose unknown, not documented by Blockchain.com).
+                 */
+                changeAccount: string;
+            }
+        }
     }
 
 }
