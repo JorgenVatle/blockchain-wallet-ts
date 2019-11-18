@@ -1,0 +1,6 @@
+{
+  "blockchain": {
+    "apiKey": "Enter your Blockchain.com API key here to run tests",
+    "walletUrl": "URL to locally hosted blockchain.com wallet service."
+  }
+}
