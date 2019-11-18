@@ -5,6 +5,6 @@
   },
   "wallet": {
     "guid": "Some GUID for testing individual wallets",
-    "password": "8Zi4Ed&ia5&S6#Ds"
+    "password": "Wallet password for testing an individual wallet"
   }
 }
