@@ -34,13 +34,22 @@ export default class BlockchainWallet {
     }
 
     /**
+     * Attach default request parameters.
+     */
+    protected requestParams(params?: { [key: string]: any }) {
+        return {
+            password: this.password,
+            api_code: this.apiKey,
+            ...params,
+        }
+    }
+
+    /**
      * Initiate a payment to the given address.
      */
     public pay(params: ServiceMyWalletApi.Params.makePayment) {
-        params.api_code = params.api_code || this.apiKey;
-
         return this.http.get<ServiceMyWalletApi.Response.makePayment>(`/merchant/${this.guid}/payment`, {
-            params,
+            params: this.requestParams(params),
         }).then(({ data }) => data);
     }
 
@@ -52,7 +61,7 @@ export default class BlockchainWallet {
 
         return this.http.get<ServiceMyWalletApi.Response.sendToMany>(`/merchant/${this.guid}/sendmany`, {
             params: {
-                ...params,
+                ...this.requestParams(params),
                 recipients: JSON.stringify(params.recipients),
             }
         }).then(({ data }) => data);
@@ -63,10 +72,7 @@ export default class BlockchainWallet {
      */
     public get balance() {
         return this.http.get<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/balance`, {
-            params: {
-                password: this.password,
-                api_code: this.apiKey,
-            }
+            params: this.requestParams(),
         }).then(({data}) => data);
     }
 
