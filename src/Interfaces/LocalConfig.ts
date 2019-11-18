@@ -1,3 +1,5 @@
+import Config from 'config';
+
 export namespace LocalConfig {
     export interface blockchain {
         apiKey: string;
@@ -8,3 +10,8 @@ export namespace LocalConfig {
         password: string;
     }
 }
+
+export default {
+    blockchain: Config.get<LocalConfig.blockchain>('blockchain'),
+    wallet: Config.get<LocalConfig.wallet>('wallet'),
+};
