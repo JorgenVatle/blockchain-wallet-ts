@@ -15,6 +15,10 @@ describe('BlockchainWallet', () => {
         })
     });
 
+    test('Can convert current wallet to HD wallet', async () => {
+        await wallet.enableHD();
+    });
+
     test('Can get balance', async () => {
         const { balance } = await wallet.balance;
         expect(balance).toBeDefined();
