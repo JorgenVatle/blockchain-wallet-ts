@@ -280,6 +280,7 @@ export namespace ServiceMyWalletApi {
 
             /**
              * Wallet account cache.
+             * Contains two xPubs, each are different and not matching the xPub provided at the root of the response.
              */
             cache: {
                 /**
