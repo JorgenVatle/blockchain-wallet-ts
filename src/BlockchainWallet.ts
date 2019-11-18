@@ -58,6 +58,18 @@ export default class BlockchainWallet {
         }).then(({ data }) => data);
     }
 
+    /**
+     * Wallet balance in satoshis.
+     */
+    public get balance() {
+        return this.http.get<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/balance`, {
+            params: {
+                password: this.password,
+                api_code: this.apiKey,
+            }
+        }).then(({data}) => data);
+    }
+
 }
 
 interface BlockchainWalletConfig {
