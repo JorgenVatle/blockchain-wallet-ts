@@ -42,6 +42,18 @@ export default class BlockchainApi {
         });
     }
 
+    /**
+     * Fetch an existing wallet using the given guid and password.
+     */
+    public getWallet(wallet: { guid: string, password: string }) {
+        return new BlockchainWallet({
+            guid: wallet.guid,
+            password: wallet.password,
+            http: this.http,
+            apiKey: this.apiKey,
+        })
+    }
+
 }
 
 /**
