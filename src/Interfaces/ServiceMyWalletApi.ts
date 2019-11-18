@@ -55,7 +55,7 @@ export namespace ServiceMyWalletApi {
             /**
              * Main wallet password.
              */
-            password: string;
+            password?: string;
 
             /**
              * Second wallet password. Required only if enabled by the wallet.
@@ -99,7 +99,7 @@ export namespace ServiceMyWalletApi {
             /**
              * Main wallet password.
              */
-            password: string;
+            password?: string;
 
             /**
              * Second wallet password. Required only if enabled by the wallet.
