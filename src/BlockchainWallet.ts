@@ -85,6 +85,17 @@ export default class BlockchainWallet {
         });
     }
 
+    /**
+     * Active HD accounts connected to this wallet.
+     *
+     * Todo: Document return type.
+     */
+    public get accounts() {
+        return this.http.get(`/merchant/${this.guid}/accounts`, {
+            params: this.requestParams(),
+        }).then(({data}) => data);
+    }
+
 }
 
 interface BlockchainWalletConfig {
