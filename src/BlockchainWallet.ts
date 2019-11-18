@@ -48,6 +48,23 @@ export default class BlockchainWallet {
         }).then(({ data }) => data);
     }
 
+    /**
+     * Initiate a payment to multiple recipients.
+     *
+     * @param guid      // Wallet ID
+     * @param params    // Request parameters.
+     */
+    public payMany(guid: string, params: ServiceMyWalletApi.Params.sendToMany) {
+        params.api_code = params.api_code || this.apiKey;
+
+        return this.http.get<ServiceMyWalletApi.Response.sendToMany>(`/merchant/${guid}/payment`, {
+            params: {
+                ...params,
+                recipients: JSON.stringify(params.recipients),
+            }
+        }).then(({ data }) => data);
+    }
+
 }
 
 /**
