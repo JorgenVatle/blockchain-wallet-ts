@@ -24,4 +24,10 @@ describe('BlockchainWallet', () => {
         expect(balance).toBeDefined();
         expect(balance).toBeGreaterThanOrEqual(0);
     });
+
+    test('Can create HD accounts', async () => {
+        const account = await wallet.createHD();
+        console.log(account);
+        expect(account).toBeDefined();
+    })
 });
