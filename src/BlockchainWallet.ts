@@ -25,8 +25,8 @@ export default class BlockchainWallet {
     /**
      * Create a new wallet.
      */
-    public createWallet(params: BlockchainWallet.walletParams) {
-        return this.http.get<BlockchainWallet.Response.createWallet>('/api/v2/create', {
+    public create(params: BlockchainWallet.createParams) {
+        return this.http.get<BlockchainWallet.Response.create>('/api/v2/create', {
             params,
         }).then(({ data }) => data);
     }
@@ -58,7 +58,7 @@ export namespace BlockchainWallet {
      *
      * @link https://github.com/blockchain/service-my-wallet-v3#creating-a-new-blockchain-wallet
      */
-    export interface walletParams {
+    export interface createParams {
         /**
          * Main wallet password.
          */
@@ -93,7 +93,7 @@ export namespace BlockchainWallet {
         /**
          * Wallet create request response.
          */
-        export interface createWallet {
+        export interface create {
             /**
              * Wallet ID.
              */
