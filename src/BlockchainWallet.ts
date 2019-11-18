@@ -1,4 +1,5 @@
 import { AxiosInstance } from 'axios';
+import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
 
 export default class BlockchainWallet {
 
@@ -30,6 +31,31 @@ export default class BlockchainWallet {
         this.http = config.http;
         this.apiKey = config.apiKey;
         this.password = config.password;
+    }
+
+    /**
+     * Initiate a payment to the given address.
+     */
+    public pay(params: ServiceMyWalletApi.Params.makePayment) {
+        params.api_code = params.api_code || this.apiKey;
+
+        return this.http.get<ServiceMyWalletApi.Response.makePayment>(`/merchant/${this.guid}/payment`, {
+            params,
+        }).then(({ data }) => data);
+    }
+
+    /**
+     * Initiate a payment to multiple recipients.
+     */
+    public payMany(params: ServiceMyWalletApi.Params.sendToMany) {
+        params.api_code = params.api_code || this.apiKey;
+
+        return this.http.get<ServiceMyWalletApi.Response.sendToMany>(`/merchant/${this.guid}/payment`, {
+            params: {
+                ...params,
+                recipients: JSON.stringify(params.recipients),
+            }
+        }).then(({ data }) => data);
     }
 
 }
