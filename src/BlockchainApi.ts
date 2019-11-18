@@ -1,5 +1,6 @@
 import Axios, { AxiosInstance } from 'axios';
 import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
+import BlockchainWallet from './BlockchainWallet';
 
 export default class BlockchainApi {
 
@@ -31,7 +32,14 @@ export default class BlockchainApi {
 
         return this.http.get<ServiceMyWalletApi.Response.createWallet>('/api/v2/create', {
             params,
-        }).then(({ data }) => data);
+        }).then(({ data }) => {
+            return new BlockchainWallet({
+                guid: data.guid,
+                password: params.password,
+                http: this.http,
+                apiKey: this.apiKey,
+            })
+        });
     }
 
 }
