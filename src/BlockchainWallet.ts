@@ -50,7 +50,7 @@ export default class BlockchainWallet {
     public payMany(params: ServiceMyWalletApi.Params.sendToMany) {
         params.api_code = params.api_code || this.apiKey;
 
-        return this.http.get<ServiceMyWalletApi.Response.sendToMany>(`/merchant/${this.guid}/payment`, {
+        return this.http.get<ServiceMyWalletApi.Response.sendToMany>(`/merchant/${this.guid}/sendmany`, {
             params: {
                 ...params,
                 recipients: JSON.stringify(params.recipients),
