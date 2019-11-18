@@ -107,6 +107,41 @@ export namespace ServiceMyWalletApi {
              */
             label?: string;
         }
+
+        /**
+         * Wallet make payment response.
+         */
+        export interface makePayment {
+            /**
+             * Bitcoin address you sent a payment to.
+             */
+            to: [string];
+
+            /**
+             * Bitcoin address you sent a payment from.
+             */
+            from: string[];
+
+            /**
+             * Number of satoshis to each 'to[]' address. (in satoshis)
+             */
+            amounts: [number];
+
+            /**
+             * Bitcoin transaction fee. (in satoshis)
+             */
+            fee: number;
+
+            /**
+             * Bitcoin transaction hash.
+             */
+            txid: string;
+
+            /**
+             * Whether or not the payment was successful.
+             */
+            success: boolean;
+        }
     }
 
 }
