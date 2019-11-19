@@ -30,7 +30,6 @@ describe('BlockchainHDWallet', () => {
         expect(data.balance).toBeDefined();
         expect(data.index).toBeDefined();
         expect(data.archived).toBeDefined();
-        expect(data.label).toBeDefined();
     });
 
     test('can fetch receiving addresses', async () => {
