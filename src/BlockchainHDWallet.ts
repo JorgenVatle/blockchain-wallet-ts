@@ -41,6 +41,13 @@ export default class BlockchainHDWallet extends BlockchainWallet {
         return this.request<ServiceMyWalletApi.Response.fetchBalance>(`/balance`);
     }
 
+    /**
+     * Fetch receiving Bitcoin address for current wallet.
+     */
+    public get receivingAddress() {
+        return this.request('/receiveAddress');
+    }
+
 }
 
 interface BlockchainHDWalletConfig extends BlockchainWalletConfig {
