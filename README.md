@@ -2,9 +2,9 @@
 A Node.js wrapper around Blockchain.com's [Service-My-Wallet](https://github.com/blockchain/service-my-wallet-v3) API.
 Written in TypeScript to provide you with all that autocomplete niceness.
 
-[![Downloads](https://img.shields.io/npm/dt/blockchain.wallet-ts.svg)](https://www.npmjs.com/package/blockchain.wallet-ts)
-[![Version](https://img.shields.io/npm/v/blockchain.wallet-ts.svg)](https://www.npmjs.com/package/blockchain.wallet-ts)
-[![Node Version](https://img.shields.io/node/v/blockchain.wallet-ts.svg)](https://www.npmjs.com/package/blockchain.wallet-ts)
+[![Downloads](https://img.shields.io/npm/dt/blockchain-wallet-ts.svg)](https://www.npmjs.com/package/blockchain-wallet-ts)
+[![Version](https://img.shields.io/npm/v/blockchain-wallet-ts.svg)](https://www.npmjs.com/package/blockchain-wallet-ts)
+[![Node Version](https://img.shields.io/node/v/blockchain-wallet-ts.svg)](https://www.npmjs.com/package/blockchain-wallet-ts)
 
 ## Prerequisites
 - A running instance of [Service-My-Wallet](https://github.com/blockchain/service-my-wallet-v3).
