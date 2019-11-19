@@ -23,6 +23,13 @@ export default class BlockchainHDWallet extends BlockchainWallet {
     }
 
     /**
+     * Wallet metadata.
+     */
+    public get data() {
+        return this.request<ServiceMyWalletApi.Response.getHD>(`/merchant/${this.guid}/accounts/${this.xpub}`);
+    }
+
+    /**
      * Fetch balance for current wallet.
      */
     public get balance() {
