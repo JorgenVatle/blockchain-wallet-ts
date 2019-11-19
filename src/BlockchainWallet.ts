@@ -86,11 +86,9 @@ export default class BlockchainWallet extends ApiClient {
 
     /**
      * Fetch HD xPubs for this wallet.
-     *
-     * Todo: Document return type.
      */
     public get xpubs() {
-        return this.request(`/accounts/xpubs`);
+        return this.request<ServiceMyWalletApi.Response.xpubs>(`/accounts/xpubs`);
     }
 
     /**
