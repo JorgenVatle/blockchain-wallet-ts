@@ -30,5 +30,10 @@ describe('BlockchainWallet', () => {
     test('Can create HD accounts', async () => {
         const account = await wallet.createHD();
         expect(account).toBeDefined();
-    })
+    });
+
+    test('Can list HD accounts', async () => {
+        const accounts = await wallet.accounts;
+        expect(accounts.length).toBeGreaterThan(0);
+    });
 });
