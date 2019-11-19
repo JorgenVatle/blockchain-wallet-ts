@@ -15,12 +15,12 @@ export default abstract class ApiClient {
     /**
      * API Base path.
      */
-    protected basePath = '/';
+    protected basePath!: string;
 
     /**
      * Parameters to be included in every API request.
      */
-    protected baseParams = {};
+    protected baseParams!: KeyVal;
 
     /**
      * API Client constructor.

@@ -26,12 +26,16 @@ export default class BlockchainHDWallet extends ApiClient {
     /**
      * API path root.
      */
-    protected readonly basePath = `/merchant/${this.guid}/accounts/${this.xpub}`;
+    protected get basePath() {
+        return `/merchant/${this.guid}/accounts/${this.xpub}`;
+    }
 
     /**
      * Parameters to be included in every API request.
      */
-    protected readonly baseParams = { password: this.password };
+    protected get baseParams() {
+        return { password: this.password };
+    }
 
     /**
      * Blockchain HD Wallet constructor.

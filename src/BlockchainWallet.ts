@@ -17,12 +17,16 @@ export default class BlockchainWallet extends ApiClient {
     /**
      * API Base path.
      */
-    protected readonly basePath = `/merchant/${this.guid}`;
+    protected get basePath() {
+        return `/merchant/${this.guid}`
+    }
 
     /**
      * Parameters to be included in every API request.
      */
-    protected readonly baseParams = { password: this.password };
+    protected get baseParams() {
+        return { password: this.password }
+    }
 
     /**
      * Blockchain Wallet constructor.
