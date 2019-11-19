@@ -10,7 +10,7 @@ export default class BlockchainHDWallet extends BlockchainWallet {
     /**
      * HD account index.
      */
-    protected readonly index: string;
+    protected readonly index: number;
 
     /**
      * Blockchain HD Wallet constructor.
@@ -32,5 +32,5 @@ interface BlockchainHDWalletConfig extends BlockchainWalletConfig {
     /**
      * Address index.
      */
-    index: string;
+    index: number;
 }
