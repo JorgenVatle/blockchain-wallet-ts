@@ -66,7 +66,7 @@ export default class BlockchainHDWallet extends ApiClient {
      * Fetch receiving Bitcoin address for current wallet.
      */
     public get receivingAddress() {
-        return this.request('/receiveAddress');
+        return this.request<ServiceMyWalletApi.Response.receiveAddressHD>('/receiveAddress');
     }
 
     /**

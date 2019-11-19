@@ -270,6 +270,13 @@ export namespace ServiceMyWalletApi {
         export type xpubs = string[];
 
         /**
+         * HD account receiving address.
+         */
+        export interface receiveAddressHD {
+            address: string;
+        }
+
+        /**
          * Enable HD wallet functionality.
          */
         export interface enableHD extends HDAccount {
