@@ -83,7 +83,7 @@ export default class BlockchainWallet extends ApiClient {
      * Todo: Document return type.
      */
     public get accounts() {
-        return this.http.get(`/accounts`);
+        return this.request(`/accounts`);
     }
 
     /**
@@ -92,7 +92,7 @@ export default class BlockchainWallet extends ApiClient {
      * Todo: Document return type.
      */
     public get xpubs() {
-        return this.http.get(`/accounts/xpubs`);
+        return this.request(`/accounts/xpubs`);
     }
 
     /**
