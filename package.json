@@ -36,6 +36,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=6.4"
+  },
   "dependencies": {
     "axios": "^0.19.0"
   }
