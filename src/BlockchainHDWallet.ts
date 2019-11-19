@@ -26,9 +26,7 @@ export default class BlockchainHDWallet extends BlockchainWallet {
      * Fetch balance for current wallet.
      */
     public get balance() {
-        return this.http.get<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/accounts/${this.xpub}/balance`, {
-            params: this.requestParams()
-        }).then(({ data }) => data);
+        return this.request<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/accounts/${this.xpub}/balance`);
     }
 
 }
