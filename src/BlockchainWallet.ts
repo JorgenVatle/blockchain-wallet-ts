@@ -2,6 +2,10 @@ import { AxiosInstance } from 'axios';
 import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
 import BlockchainHDWallet from './BlockchainHDWallet';
 
+interface KeyVal {
+    [key: string]: any;
+}
+
 export default class BlockchainWallet {
 
     /**
@@ -37,7 +41,7 @@ export default class BlockchainWallet {
     /**
      * Attach default request parameters.
      */
-    protected requestParams(params?: { [key: string]: any }) {
+    protected requestParams(params?: KeyVal) {
         return {
             password: this.password,
             api_code: this.apiKey,
@@ -46,44 +50,41 @@ export default class BlockchainWallet {
     }
 
     /**
+     * Send an API request.
+     */
+    protected request<T>(path: string, params?: KeyVal) {
+        return this.http.get<T>(path, { params: this.requestParams(params) }).then(({data}) => data);
+    }
+
+    /**
      * Initiate a payment to the given address.
      */
     public pay(params: ServiceMyWalletApi.Params.makePayment) {
-        return this.http.get<ServiceMyWalletApi.Response.makePayment>(`/merchant/${this.guid}/payment`, {
-            params: this.requestParams(params),
-        }).then(({ data }) => data);
+        return this.request<ServiceMyWalletApi.Response.makePayment>(`/merchant/${this.guid}/payment`, params);
     }
 
     /**
      * Initiate a payment to multiple recipients.
      */
     public payMany(params: ServiceMyWalletApi.Params.sendToMany) {
-        params.api_code = params.api_code || this.apiKey;
-
-        return this.http.get<ServiceMyWalletApi.Response.sendToMany>(`/merchant/${this.guid}/sendmany`, {
-            params: {
-                ...this.requestParams(params),
-                recipients: JSON.stringify(params.recipients),
-            }
-        }).then(({ data }) => data);
+        return this.request<ServiceMyWalletApi.Response.sendToMany>(`/merchant/${this.guid}/sendmany`, {
+            ...this.requestParams(params),
+            recipients: JSON.stringify(params.recipients),
+        });
     }
 
     /**
      * Wallet balance in satoshis.
      */
     public get balance() {
-        return this.http.get<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/balance`, {
-            params: this.requestParams(),
-        }).then(({data}) => data);
+        return this.request<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/balance`);
     }
 
     /**
      * Enable HD wallet functionality for the current wallet.
      */
     public async enableHD() {
-        await this.http.get<ServiceMyWalletApi.Response.enableHD>(`/merchant/${this.guid}/enableHD`, {
-            params: this.requestParams(),
-        }).then(({ data }) => {
+        await this.request<ServiceMyWalletApi.Response.enableHD>(`/merchant/${this.guid}/enableHD`).then((data) => {
             return new BlockchainHDWallet({
                 guid: this.guid,
                 password: this.password,
@@ -101,9 +102,7 @@ export default class BlockchainWallet {
      * Todo: Document return type.
      */
     public get accounts() {
-        return this.http.get(`/merchant/${this.guid}/accounts`, {
-            params: this.requestParams(),
-        }).then(({data}) => data);
+        return this.http.get(`/merchant/${this.guid}/accounts`);
     }
 
     /**
@@ -112,9 +111,7 @@ export default class BlockchainWallet {
      * Todo: Document return type.
      */
     public get xpubs() {
-        return this.http.get(`/merchant/${this.guid}/accounts/xpubs`, {
-            params: this.requestParams(),
-        }).then(({data}) => data);
+        return this.http.get(`/merchant/${this.guid}/accounts/xpubs`);
     }
 
     /**
@@ -123,9 +120,7 @@ export default class BlockchainWallet {
      * Todo: Document return type.
      */
     public createHD(params?: ServiceMyWalletApi.Params.createHDAccount) {
-        return this.http.get(`/merchant/${this.guid}/accounts/create`, {
-            params: this.requestParams(params),
-        }).then(({ data }) => data);
+        return this.request(`/merchant/${this.guid}/accounts/create`, params);
     }
 
 }
