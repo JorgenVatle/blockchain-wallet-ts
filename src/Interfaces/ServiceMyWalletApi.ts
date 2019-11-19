@@ -344,6 +344,11 @@ export namespace ServiceMyWalletApi {
                 changeAccount: string;
             }
         }
+
+        /**
+         * Single HD wallet fetch response.
+         */
+        export interface getHD extends enableHD {}
     }
 
 }
