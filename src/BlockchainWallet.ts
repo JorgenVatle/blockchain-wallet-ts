@@ -95,7 +95,16 @@ export default class BlockchainWallet extends ApiClient {
      * Create HD account.
      */
     public createHD(params?: ServiceMyWalletApi.Params.createHDAccount) {
-        return this.request<ServiceMyWalletApi.Response.createHD>(`/accounts/create`, params);
+        return this.request<ServiceMyWalletApi.Response.createHD>(`/accounts/create`, params).then((wallet) => {
+            return new BlockchainHDWallet({
+                xpub: wallet.xpub,
+                index: 0,
+                http: this.http,
+                apiKey: this.apiKey,
+                guid: this.guid,
+                password: this.password,
+            })
+        });
     }
 
 }
