@@ -120,7 +120,7 @@ export default class BlockchainWallet {
 
 }
 
-interface BlockchainWalletConfig {
+export interface BlockchainWalletConfig {
     /**
      * Wallet GUID.
      */
