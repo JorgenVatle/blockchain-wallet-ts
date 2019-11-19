@@ -260,6 +260,11 @@ export namespace ServiceMyWalletApi {
         export type accounts = HDAccount[];
 
         /**
+         * Wallet xpub list.
+         */
+        export type xpubs = string[];
+
+        /**
          * Enable HD wallet functionality.
          */
         export interface enableHD extends HDAccount {
