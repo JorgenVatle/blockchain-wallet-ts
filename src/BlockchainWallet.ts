@@ -1,12 +1,8 @@
-import { AxiosInstance } from 'axios';
 import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
 import BlockchainHDWallet from './BlockchainHDWallet';
+import ApiClient, { ApiClientConfig } from './Providers/ApiClient';
 
-interface KeyVal {
-    [key: string]: any;
-}
-
-export default class BlockchainWallet {
+export default class BlockchainWallet extends ApiClient {
 
     /**
      * Blockchain.com wallet ID.
@@ -19,47 +15,22 @@ export default class BlockchainWallet {
     private readonly password: string;
 
     /**
-     * HTTP API Client.
-     */
-    protected readonly http: AxiosInstance;
-
-    /**
-     * Blockchain.com API Key.
-     */
-    private readonly apiKey?: string;
-
-    /**
      * API Base path.
      */
     protected readonly basePath = `/merchant/${this.guid}`;
 
     /**
+     * Parameters to be included in every API request.
+     */
+    protected readonly baseParams = { password: this.password };
+
+    /**
      * Blockchain Wallet constructor.
      */
     public constructor(config: BlockchainWalletConfig) {
+        super(config);
         this.guid = config.guid;
-        this.http = config.http;
-        this.apiKey = config.apiKey;
         this.password = config.password;
-    }
-
-    /**
-     * Attach default request parameters.
-     */
-    protected requestParams(params?: KeyVal) {
-        return {
-            password: this.password,
-            api_code: this.apiKey,
-            ...params,
-        }
-    }
-
-    /**
-     * Send an API request.
-     */
-    protected request<T>(path: string, params?: KeyVal) {
-        const endpoint = this.basePath.replace(/\/+$/, '') + '/' + path.replace(/^\/+/, '');
-        return this.http.get<T>(endpoint, { params: this.requestParams(params) }).then(({data}) => data);
     }
 
     /**
@@ -131,7 +102,7 @@ export default class BlockchainWallet {
 
 }
 
-export interface BlockchainWalletConfig {
+export interface BlockchainWalletConfig extends ApiClientConfig {
     /**
      * Wallet GUID.
      */
@@ -142,13 +113,4 @@ export interface BlockchainWalletConfig {
      */
     password: string;
 
-    /**
-     * API Client.
-     */
-    http: AxiosInstance;
-
-    /**
-     * Blockchain.com API Key.
-     */
-    apiKey?: string;
 }

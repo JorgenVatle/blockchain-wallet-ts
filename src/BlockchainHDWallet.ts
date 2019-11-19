@@ -1,7 +1,7 @@
-import BlockchainWallet, { BlockchainWalletConfig } from './BlockchainWallet';
 import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
+import ApiClient, { ApiClientConfig } from './Providers/ApiClient';
 
-export default class BlockchainHDWallet extends BlockchainWallet {
+export default class BlockchainHDWallet extends ApiClient {
 
     /**
      * HD account xPub.
@@ -12,6 +12,16 @@ export default class BlockchainHDWallet extends BlockchainWallet {
      * HD account index.
      */
     protected readonly index: number;
+
+    /**
+     * Blockchain.com wallet ID.
+     */
+    protected readonly guid: string;
+
+    /**
+     * Blockchain.com wallet password.
+     */
+    protected readonly password: string;
 
     /**
      * API path root.
@@ -25,6 +35,8 @@ export default class BlockchainHDWallet extends BlockchainWallet {
         super(config);
         this.xpub = config.xpub;
         this.index = config.index;
+        this.guid = config.guid;
+        this.password = config.password;
     }
 
     /**
@@ -64,7 +76,17 @@ export default class BlockchainHDWallet extends BlockchainWallet {
 
 }
 
-interface BlockchainHDWalletConfig extends BlockchainWalletConfig {
+interface BlockchainHDWalletConfig extends ApiClientConfig {
+    /**
+     * Wallet GUID.
+     */
+    guid: string;
+
+    /**
+     * Wallet password.
+     */
+    password: string;
+
     /**
      * Account xPub
      */
