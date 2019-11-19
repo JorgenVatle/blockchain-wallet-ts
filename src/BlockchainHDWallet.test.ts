@@ -35,7 +35,7 @@ describe('BlockchainHDWallet', () => {
 
     test('can fetch receiving addresses', async () => {
         const wallet = await hdWallet.receivingAddress;
-        expect(wallet.address).toBeInstanceOf(String);
+        expect(wallet.address).toBeDefined();
     });
 
 });
