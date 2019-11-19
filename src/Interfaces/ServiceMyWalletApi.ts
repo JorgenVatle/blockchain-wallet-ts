@@ -255,6 +255,56 @@ export namespace ServiceMyWalletApi {
         }
 
         /**
+         * Enable HD wallet functionality.
+         */
+        export interface enableHD {
+            /**
+             * Bitcoin account balance.
+             */
+            balance: null | number;
+
+            /**
+             * Wallet label.
+             */
+            label: string;
+
+            /**
+             * Address index.
+             */
+            index: number;
+
+            /**
+             * Whether or not the wallet address has been archived.
+             */
+            archived: boolean;
+
+            /**
+             * xPub for current wallet.
+             */
+            extendedPublicKey: string;
+
+            /**
+             * xPriv for current wallet.
+             */
+            extendedPrivateKey: string;
+
+            /**
+             * Address receive index. (todo: determine difference between 'index')
+             */
+            receiveIndex: number;
+
+            /**
+             * Index of address with most recent send/receive activity.
+             */
+            lastUsedReceiveIndex: null | number;
+
+            /**
+             * Wallet Bitcoin address.
+             */
+            receiveAddress: string;
+        }
+
+        /**
          * HD wallet creation response.
          */
         export interface createHD {
