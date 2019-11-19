@@ -16,8 +16,8 @@ describe('BlockchainWallet', () => {
         })
     });
 
-    test('Can convert current wallet to HD wallet', async () => {
-        const wallet = await blockchain.createWallet({ password: 'some-placeholder-password' });
+    test('Can convert wallet to HD wallet', async () => {
+        const wallet = await blockchain.createWallet({ password: 'some-placeholder-password', hd: false });
         await wallet.enableHD();
     });
 
