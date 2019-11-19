@@ -55,6 +55,13 @@ export default class BlockchainHDWallet extends BlockchainWallet {
         return this.request('/archive');
     }
 
+    /**
+     * Remove the current address/account from the archive, making it active again.
+     */
+    public unarchive() {
+        return this.request('/unarchive');
+    }
+
 }
 
 interface BlockchainHDWalletConfig extends BlockchainWalletConfig {
