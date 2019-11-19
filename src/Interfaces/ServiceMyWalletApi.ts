@@ -255,53 +255,18 @@ export namespace ServiceMyWalletApi {
         }
 
         /**
+         * HD wallet account list.
+         */
+        export type accounts = HDAccount[];
+
+        /**
          * Enable HD wallet functionality.
          */
-        export interface enableHD {
-            /**
-             * Bitcoin account balance.
-             */
-            balance: null | number;
-
+        export interface enableHD extends HDAccount {
             /**
              * Wallet label.
              */
             label: string;
-
-            /**
-             * Address index.
-             */
-            index: number;
-
-            /**
-             * Whether or not the wallet address has been archived.
-             */
-            archived: boolean;
-
-            /**
-             * xPub for current wallet.
-             */
-            extendedPublicKey: string;
-
-            /**
-             * xPriv for current wallet.
-             */
-            extendedPrivateKey: string;
-
-            /**
-             * Address receive index. (todo: determine difference between 'index')
-             */
-            receiveIndex: number;
-
-            /**
-             * Index of address with most recent send/receive activity.
-             */
-            lastUsedReceiveIndex: null | number;
-
-            /**
-             * Wallet Bitcoin address.
-             */
-            receiveAddress: string;
         }
 
         /**
@@ -351,4 +316,46 @@ export namespace ServiceMyWalletApi {
         export interface getHD extends enableHD {}
     }
 
+}
+
+export interface HDAccount {
+    /**
+     * Bitcoin account balance.
+     */
+    balance: null | number;
+
+    /**
+     * Address index.
+     */
+    index: number;
+
+    /**
+     * Whether or not the wallet address has been archived.
+     */
+    archived: boolean;
+
+    /**
+     * xPub for current wallet.
+     */
+    extendedPublicKey: string;
+
+    /**
+     * xPriv for current wallet.
+     */
+    extendedPrivateKey: string;
+
+    /**
+     * Address receive index. (todo: determine difference between 'index')
+     */
+    receiveIndex: number;
+
+    /**
+     * Index of address with most recent send/receive activity.
+     */
+    lastUsedReceiveIndex: null | number;
+
+    /**
+     * Wallet Bitcoin address.
+     */
+    receiveAddress: string;
 }
