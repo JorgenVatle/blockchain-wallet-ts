@@ -29,9 +29,13 @@ export default class BlockchainApi {
      */
     public createWallet(params: ServiceMyWalletApi.Params.createWallet) {
         params.api_code = params.api_code || this.apiKey;
-        params.hd = typeof params.hd === 'undefined'
-            ? true
-            : params.hd;
+
+        // This works around an issue that breaks the API when passing hd=false.
+        if (params.hd) {
+            params.hd = true;
+        } else {
+            delete params.hd;
+        }
 
         return this.http.get<ServiceMyWalletApi.Response.createWallet>('/api/v2/create', {
             params,
