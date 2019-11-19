@@ -29,6 +29,11 @@ export default class BlockchainWallet {
     private readonly apiKey?: string;
 
     /**
+     * API Base path.
+     */
+    protected readonly basePath = `/merchant/${this.guid}`;
+
+    /**
      * Blockchain Wallet constructor.
      */
     public constructor(config: BlockchainWalletConfig) {
@@ -53,21 +58,22 @@ export default class BlockchainWallet {
      * Send an API request.
      */
     protected request<T>(path: string, params?: KeyVal) {
-        return this.http.get<T>(path, { params: this.requestParams(params) }).then(({data}) => data);
+        const endpoint = this.basePath.replace(/\/+$/, '') + '/' + path.replace(/^\/+/, '');
+        return this.http.get<T>(endpoint, { params: this.requestParams(params) }).then(({data}) => data);
     }
 
     /**
      * Initiate a payment to the given address.
      */
     public pay(params: ServiceMyWalletApi.Params.makePayment) {
-        return this.request<ServiceMyWalletApi.Response.makePayment>(`/merchant/${this.guid}/payment`, params);
+        return this.request<ServiceMyWalletApi.Response.makePayment>(`/payment`, params);
     }
 
     /**
      * Initiate a payment to multiple recipients.
      */
     public payMany(params: ServiceMyWalletApi.Params.sendToMany) {
-        return this.request<ServiceMyWalletApi.Response.sendToMany>(`/merchant/${this.guid}/sendmany`, {
+        return this.request<ServiceMyWalletApi.Response.sendToMany>(`/sendmany`, {
             ...this.requestParams(params),
             recipients: JSON.stringify(params.recipients),
         });
@@ -77,14 +83,14 @@ export default class BlockchainWallet {
      * Wallet balance in satoshis.
      */
     public get balance() {
-        return this.request<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/balance`);
+        return this.request<ServiceMyWalletApi.Response.fetchBalance>(`/balance`);
     }
 
     /**
      * Enable HD wallet functionality for the current wallet.
      */
     public async enableHD() {
-        await this.request<ServiceMyWalletApi.Response.enableHD>(`/merchant/${this.guid}/enableHD`).then((data) => {
+        await this.request<ServiceMyWalletApi.Response.enableHD>(`/enableHD`).then((data) => {
             return new BlockchainHDWallet({
                 guid: this.guid,
                 password: this.password,
@@ -102,7 +108,7 @@ export default class BlockchainWallet {
      * Todo: Document return type.
      */
     public get accounts() {
-        return this.http.get(`/merchant/${this.guid}/accounts`);
+        return this.http.get(`/accounts`);
     }
 
     /**
@@ -111,7 +117,7 @@ export default class BlockchainWallet {
      * Todo: Document return type.
      */
     public get xpubs() {
-        return this.http.get(`/merchant/${this.guid}/accounts/xpubs`);
+        return this.http.get(`/accounts/xpubs`);
     }
 
     /**
@@ -120,7 +126,7 @@ export default class BlockchainWallet {
      * Todo: Document return type.
      */
     public createHD(params?: ServiceMyWalletApi.Params.createHDAccount) {
-        return this.request(`/merchant/${this.guid}/accounts/create`, params);
+        return this.request(`/accounts/create`, params);
     }
 
 }
