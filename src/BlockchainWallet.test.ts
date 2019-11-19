@@ -36,4 +36,9 @@ describe('BlockchainWallet', () => {
         const accounts = await wallet.accounts;
         expect(accounts.length).toBeGreaterThan(0);
     });
+
+    test('Can list xPubs', async () =>{
+        const xpubs = await wallet.xpubs;
+        expect(xpubs.length).toBeGreaterThan(0);
+    });
 });
