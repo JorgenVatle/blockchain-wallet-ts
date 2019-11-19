@@ -1,6 +1,7 @@
 import BlockchainWallet from './BlockchainWallet';
 import BlockchainApi from './BlockchainApi';
 import LocalConfig from './Interfaces/LocalConfig';
+import BlockchainHDWallet from './BlockchainHDWallet';
 
 describe('BlockchainWallet', () => {
     let wallet: BlockchainWallet;
@@ -30,6 +31,7 @@ describe('BlockchainWallet', () => {
     test('Can create HD accounts', async () => {
         const account = await wallet.createHD();
         expect(account).toBeDefined();
+        expect(account).toBeInstanceOf(BlockchainHDWallet);
     });
 
     test('Can list HD accounts', async () => {
