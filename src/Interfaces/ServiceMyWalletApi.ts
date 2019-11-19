@@ -34,6 +34,11 @@ export namespace ServiceMyWalletApi {
              * Email address to associate with the newly created wallet.
              */
             email?: string;
+
+            /**
+             * Whether or not to create a HD wallet.
+             */
+            hd?: boolean;
         }
 
         /**
