@@ -79,11 +79,9 @@ export default class BlockchainWallet extends ApiClient {
 
     /**
      * Active HD accounts connected to this wallet.
-     *
-     * Todo: Document return type.
      */
     public get accounts() {
-        return this.request(`/accounts`);
+        return this.request<ServiceMyWalletApi.Response.accounts>(`/accounts`);
     }
 
     /**
