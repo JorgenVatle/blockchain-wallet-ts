@@ -19,6 +19,20 @@ describe('BlockchainHDWallet', () => {
         hdWallet = await wallet.createHD();
     });
 
+    test('can fetch metadata', async () => {
+        const data = await hdWallet.data;
+        expect(data).toBeDefined();
+        expect(data.lastUsedReceiveIndex).toBeDefined();
+        expect(data.extendedPrivateKey).toBeDefined();
+        expect(data.extendedPublicKey).toBeDefined();
+        expect(data.receiveAddress).toBeDefined();
+        expect(data.receiveIndex).toBeDefined();
+        expect(data.balance).toBeDefined();
+        expect(data.index).toBeDefined();
+        expect(data.archived).toBeDefined();
+        expect(data.label).toBeDefined();
+    });
+
     test('can fetch receiving addresses', async () => {
         const wallet = await hdWallet.receivingAddress;
         expect(wallet.address).toBeInstanceOf(String);
