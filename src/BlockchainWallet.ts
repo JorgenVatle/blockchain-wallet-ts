@@ -97,11 +97,9 @@ export default class BlockchainWallet extends ApiClient {
 
     /**
      * Create HD account.
-     *
-     * Todo: Document return type.
      */
     public createHD(params?: ServiceMyWalletApi.Params.createHDAccount) {
-        return this.request(`/accounts/create`, params);
+        return this.request<ServiceMyWalletApi.Response.createHD>(`/accounts/create`, params);
     }
 
 }
