@@ -48,6 +48,13 @@ export default class BlockchainHDWallet extends BlockchainWallet {
         return this.request('/receiveAddress');
     }
 
+    /**
+     * Archive the current address/account.
+     */
+    public archive() {
+        return this.request('/archive');
+    }
+
 }
 
 interface BlockchainHDWalletConfig extends BlockchainWalletConfig {
