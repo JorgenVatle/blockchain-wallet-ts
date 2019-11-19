@@ -27,7 +27,7 @@ const Blockchain = BlockchainApi({
 })
 ```
 
-##### Create a wallet.
+#### Create a wallet.
 ```typescript
 const Wallet = await Blockchain.createWallet({
     password: 'some-secure-wallet-password.'
@@ -35,7 +35,7 @@ const Wallet = await Blockchain.createWallet({
 ```
 Returns an instance of [`BlockchainWallet`](src/BlockchainWallet.ts).
 
-##### Fetch wallet addresses
+#### Fetch wallet addresses
 ```typescript
 const accounts = await Wallet.accounts;
 ```
@@ -53,7 +53,7 @@ Returns an array of accounts attached to your wallet.
 }]
 ```
 
-##### Check balance
+#### Check balance
 ```typescript
 const account = await Wallet.balance;  
 ```
@@ -62,7 +62,7 @@ Returns the overall balance of your wallet.
 { balance: 0 }
 ```
 
-##### Create a payment
+#### Create a payment
 ```typescript
 Wallet.pay({
     to: '1H5rvJbGNK7gmyR28pknmj...', // Recipient address.
@@ -70,7 +70,7 @@ Wallet.pay({
 })
 ```
 
-##### Send Bitcoin to multiple recipients
+#### Send Bitcoin to multiple recipients
 ```typescript
 Wallet.payMany({
     recipients: { 
