@@ -14,6 +14,11 @@ export default class BlockchainHDWallet extends BlockchainWallet {
     protected readonly index: number;
 
     /**
+     * API path root.
+     */
+    protected readonly basePath = `/merchant/${this.guid}/accounts/${this.xpub}`;
+
+    /**
      * Blockchain HD Wallet constructor.
      */
     public constructor(config: BlockchainHDWalletConfig) {
@@ -26,14 +31,14 @@ export default class BlockchainHDWallet extends BlockchainWallet {
      * Wallet metadata.
      */
     public get data() {
-        return this.request<ServiceMyWalletApi.Response.getHD>(`/merchant/${this.guid}/accounts/${this.xpub}`);
+        return this.request<ServiceMyWalletApi.Response.getHD>('');
     }
 
     /**
      * Fetch balance for current wallet.
      */
     public get balance() {
-        return this.request<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/accounts/${this.xpub}/balance`);
+        return this.request<ServiceMyWalletApi.Response.fetchBalance>(`/balance`);
     }
 
 }
