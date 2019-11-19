@@ -31,7 +31,8 @@ export default class BlockchainApi {
         params.api_code = params.api_code || this.apiKey;
 
         // This works around an issue that breaks the API when passing hd=false.
-        if (params.hd) {
+        // While also keeping 'hd' as an option that id enabled by default.
+        if (params.hd || typeof params.hd === 'undefined') {
             params.hd = true;
         } else {
             delete params.hd;
