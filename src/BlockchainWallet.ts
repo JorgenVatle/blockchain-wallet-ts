@@ -1,5 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
+import BlockchainHDWallet from './BlockchainHDWallet';
 
 export default class BlockchainWallet {
 
@@ -80,8 +81,17 @@ export default class BlockchainWallet {
      * Enable HD wallet functionality for the current wallet.
      */
     public async enableHD() {
-        await this.http.get(`/merchant/${this.guid}/enableHD`, {
+        await this.http.get<ServiceMyWalletApi.Response.enableHD>(`/merchant/${this.guid}/enableHD`, {
             params: this.requestParams(),
+        }).then(({ data }) => {
+            return new BlockchainHDWallet({
+                guid: this.guid,
+                password: this.password,
+                http: this.http,
+                apiKey: this.apiKey,
+                xpub: data.extendedPublicKey,
+                index: data.index,
+            })
         });
     }
 
