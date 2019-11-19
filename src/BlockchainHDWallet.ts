@@ -1,4 +1,5 @@
 import BlockchainWallet, { BlockchainWalletConfig } from './BlockchainWallet';
+import { ServiceMyWalletApi } from './Interfaces/ServiceMyWalletApi';
 
 export default class BlockchainHDWallet extends BlockchainWallet {
 
@@ -19,6 +20,15 @@ export default class BlockchainHDWallet extends BlockchainWallet {
         super(config);
         this.xpub = config.xpub;
         this.index = config.index;
+    }
+
+    /**
+     * Fetch balance for current wallet.
+     */
+    public get balance() {
+        return this.http.get<ServiceMyWalletApi.Response.fetchBalance>(`/merchant/${this.guid}/accounts/${this.xpub}/balance`, {
+            params: this.requestParams()
+        }).then(({ data }) => data);
     }
 
 }
