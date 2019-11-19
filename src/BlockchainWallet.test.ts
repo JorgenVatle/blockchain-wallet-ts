@@ -4,18 +4,20 @@ import LocalConfig from './Interfaces/LocalConfig';
 
 describe('BlockchainWallet', () => {
     let wallet: BlockchainWallet;
+    const blockchain = new BlockchainApi({
+        apiKey: LocalConfig.blockchain.apiKey,
+        apiUrl: LocalConfig.blockchain.apiUrl,
+    });
 
     beforeAll(async () => {
-        wallet = await new BlockchainApi({
-            apiKey: LocalConfig.blockchain.apiKey,
-            apiUrl: LocalConfig.blockchain.apiUrl,
-        }).getWallet({
+        wallet = await blockchain.getWallet({
             guid: LocalConfig.wallet.guid,
             password: LocalConfig.wallet.password,
         })
     });
 
     test('Can convert current wallet to HD wallet', async () => {
+        const wallet = await blockchain.createWallet({ password: 'some-placeholder-password' });
         await wallet.enableHD();
     });
 
