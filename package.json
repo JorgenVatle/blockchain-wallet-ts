@@ -1,6 +1,6 @@
 {
   "name": "blockchain-wallet-ts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "TypeScript wrapper for Blockchain.info's wallet API",
   "main": "dist/BlockchainApi.js",
   "types": "dist/BlockchainApi.d.ts",
